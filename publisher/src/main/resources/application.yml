@@ -1,0 +1,19 @@
+logging:
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+spring:
+  rabbitmq:
+    host: 192.168.206.128
+    port: 5672
+    virtual-host: /hmall
+    username: hmall
+    password: 123
+    connection-timeout: 1s #连接超时时间
+    template:
+      retry:
+        enabled: true #开启超时重试机制
+        multiplier: 2 #失败后下次的等待时常倍数
+        max-attempts: 3 #最大重试数
+        initial-interval: 1000ms #初始重试间隔
+    publisher-confirm-type: none
+    publicsher-returns: false
